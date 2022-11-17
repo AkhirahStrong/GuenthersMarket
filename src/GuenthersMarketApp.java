@@ -23,7 +23,6 @@ public class GuenthersMarketApp {
 	
 	public static void main(String[] args) {
 		scan = new Scanner(System.in);
-			//`NumberFormat formatter = new DecimalFormat("#0.00");
 		
 		//Glabal vars
 		double itemPriceInput = 0.0;
@@ -41,25 +40,30 @@ public class GuenthersMarketApp {
 		System.out.println("What is your first name? ");
 		nameCap = scan.nextLine();
 		System.out.println("");
+		
+		
 		//.contain
 		//System.out.format("%-25s $%s%n", key, val);
 		  
 		do {
-			  
+			  try {
 			    mapOfItems();
 				printMenu();
+				System.out.println("");
 				/*The start of taking the order*/
 				System.out.println("What would you like to order " + getUserNameToCap(nameCap) + "?");
 				itemNameInput = scan.nextLine();           //take user input
 				itemPriceInput = items.get(itemNameInput); //get item price via item name
 				itemNames.add(itemNameInput);              //add input to itemName arrayList
 				itemPrices.add(itemPriceInput);            //add itemPrice to arrayList
-		
+				//Output 
+				System.out.println("Adding " + getUserNameToCap(itemNameInput) + " to your cart at $" + itemPriceInput);
+				System.out.println("");
+			  }catch(NullPointerException ex) {
+				  System.out.println("That item does not exist. ");
+			  }
+				
 			
-			
-			//Output 
-			System.out.println("Adding " + getUserNameToCap(itemNameInput) + " to your cart at $" + itemPriceInput);
-			System.out.println("");
 			
 			//Ask user if they want to order more.
 			System.out.println("Would you like to order anything else (y/n)?");
@@ -102,14 +106,14 @@ public class GuenthersMarketApp {
 	
 	//Map input for grocery items
 	public static void mapOfItems() {
-		items.put("salmon", 16.07);
-		items.put("spinach", 2.55);
-		items.put("bag of rice", 5.07);
-		items.put("grapes", 3.01);
-		items.put("lamb chops", 15.05);
-		items.put("garlic", 1.55);
-		items.put("bag of lemon", 1.75);
-		items.put("butter", 4.08);
+		items.put("Salmon", 16.07);
+		items.put("Spinach", 2.55);
+		items.put("Bag of Rice", 5.07);
+		items.put("Grapes", 3.01);
+		items.put("Lamb Chops", 15.05);
+		items.put("Garlic", 1.55);
+		items.put("Bag of Lemon", 1.75);
+		items.put("Butter", 4.08);
 	}
 	
 	//Print the grocery items
